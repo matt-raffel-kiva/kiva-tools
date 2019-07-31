@@ -1,6 +1,6 @@
 #
 #
-version: '1'
+version: '3'
 
 networks:
   kiva-network:
@@ -12,10 +12,11 @@ services:
     command: bash
     image: kiva-tools-rust-env
     container_name: kiva-tools-rust-env
-    working_dir: /www
-    ports:
+    environment:
+      - PATH="~/.cargo/bin:${PATH}"
+    working_dir: /src
     volumes:
-     - ./:/www
+     - ./:/src
      - node_modules:/www/node_modules
     networks:
       - kiva-network

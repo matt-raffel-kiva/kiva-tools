@@ -1,7 +1,7 @@
 # Note that the indy-sdk requires ubuntu 16 and some custom dependencies so we can't use node:carbon-apline like the others
 FROM ubuntu:16.04
 
-# Grab dependencies via apt-get
+# This is the base of everything we will need for the image
 RUN apt-get update && \
       apt-get install -y \
       software-properties-common \
@@ -9,7 +9,10 @@ RUN apt-get update && \
       curl \
       build-essential \
       python2.7 \
-      python-pip
+      python-pip \
+      git \
+      vim
+
 
 # Recommended way to get setup with libindy: https://github.com/hyperledger/indy-sdk#ubuntu-based-distributions-ubuntu-1604
 ARG indy_stream=master
@@ -24,8 +27,8 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash && \
 
 
 # setup rust
-RUN curl https://sh.rustup.rs -sSf | sh
-RUN export PATH="~/.cargo/bin:${PATH}"
+RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
+ENV PATH=~/.cargo/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
 # setup for libindy compile
 RUN apt-get update && \
@@ -57,4 +60,4 @@ RUN cd /tmp && \
 # @todo maybe make 8080
 # EXPOSE 3001
 # @todo need an easy way to switch between dev and prod, can use docker-compose
-# CMD [ "npm", "run", "start:debug" ]
+CMD [ "bash", "npm", "run", "start:debug" ]
