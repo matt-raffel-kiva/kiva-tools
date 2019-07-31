@@ -1,0 +1,26 @@
+#
+#
+version: '1'
+
+networks:
+  kiva-network:
+    external: true
+
+services:
+  kiva-tools-rust-env:
+    build: ./
+    command: bash
+    image: kiva-tools-rust-env
+    container_name: kiva-tools-rust-env
+    working_dir: /www
+    ports:
+    volumes:
+     - ./:/www
+     - node_modules:/www/node_modules
+    networks:
+      - kiva-network
+    tty: true
+
+volumes:
+  node_modules:
+  db_data: {}
