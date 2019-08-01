@@ -3,7 +3,7 @@
 version: '3'
 
 networks:
-  kiva-network:
+  dev-network:
     external: true
 
 services:
@@ -19,7 +19,7 @@ services:
      - ./:/src
      - node_modules:/www/node_modules
     networks:
-      - kiva-network
+      - dev-network
     tty: true
 
 volumes:
