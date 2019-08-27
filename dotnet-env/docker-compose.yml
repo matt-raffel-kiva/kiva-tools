@@ -1,0 +1,24 @@
+#
+#
+version: '3'
+
+networks:
+  dev-network:
+    external: true
+
+services:
+  kiva-tools-dotnet-env:
+    build: ./
+    command: bash
+    image: kiva-tools-dotnet-env
+    container_name: kiva-tools-dotnet-env
+    working_dir: /src
+    volumes:
+     - ./:/src
+    networks:
+      - dev-network
+    tty: true
+
+volumes:
+  node_modules:
+  db_data: {}
