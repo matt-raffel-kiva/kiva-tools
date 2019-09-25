@@ -1,0 +1,27 @@
+#
+#
+version: '3'
+
+networks:
+  dev-network:
+    external: true
+
+services:
+  kiva-tools-ariesjs-env:
+    build: ./
+    command: bash
+    image: kiva-tools-ariesjs-env
+    container_name: kiva-tools-ariesjs-env
+    environment:
+      - PATH="~/.cargo/bin:${PATH}"
+    working_dir: /src
+    volumes:
+     - ./:/src
+     - node_modules:/www/node_modules
+    networks:
+      - dev-network
+    tty: true
+
+volumes:
+  node_modules:
+  db_data: {}
