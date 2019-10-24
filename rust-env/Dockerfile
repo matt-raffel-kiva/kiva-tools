@@ -6,15 +6,16 @@ RUN apt-get update && \
       apt-get install -y \
       software-properties-common \
       apt-transport-https \
-      curl \
       build-essential \
+      curl \
+      git \
+      iputils-ping \
       python2.7 \
       python-pip \
-      git \
+      sudo \
+      telnet \
       vim \
-      wget \
-      iputils-ping \
-      telnet
+      wget
 
 
 # Recommended way to get setup with libindy: https://github.com/hyperledger/indy-sdk#ubuntu-based-distributions-ubuntu-1604

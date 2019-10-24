@@ -1,0 +1,24 @@
+#
+#
+version: '3'
+
+networks:
+  dev-network:
+    external: true
+
+services:
+  kiva-tools-besu-env:
+    build: ./
+    command: bash
+    image: kiva-tools-besu-env
+    container_name: kiva-tools-besu-env
+    working_dir: /besu
+    volumes:
+     - ./:/besu
+    networks:
+      - dev-network
+    tty: true
+
+volumes:
+  node_modules:
+  db_data: {}

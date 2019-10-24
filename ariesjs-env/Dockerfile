@@ -6,6 +6,7 @@ RUN apt-get update && \
       apt-get install -y \
       software-properties-common \
       apt-transport-https \
+      sudo \
       curl \
       build-essential \
       python2.7 \
