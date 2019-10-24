@@ -1,5 +1,8 @@
 {
   "config":{
+    "rpc-http-enabled": true,
+    "rpc-http-cors-origins": "*",
+    "rpc-http-authentication-enabled": false,
     "chainId":1981,
     "name": "bob.test",
     "constantinoplefixblock": 0,

@@ -11,6 +11,7 @@ RUN apt-get update && \
       curl \
       git \
       iputils-ping \
+      netcat \
       python2.7 \
       python-pip \
       sudo \
