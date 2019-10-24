@@ -67,7 +67,8 @@ ENV JAVA_HOME=/opt/java/openjdk \
     PATH="/opt/java/openjdk/bin:$PATH"
 
 WORKDIR /besu
-ADD besu-1.3.2.tar.gz .
-RUN tar -xzf besu-1.3.2.tar.gz
+COPY keep/besu-1.3.2.tar.gz /tmp
+RUN tar -xzf "/tmp/besu-1.3.2.tar.gz" --directory /besu
+EXPOSE 8545
 
-CMD [ "sh" ]
+ENTRYPOINT [ "/besu/keep/start_node.sh" ]
