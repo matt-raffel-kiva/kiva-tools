@@ -13,6 +13,10 @@ do
 
         ACTIVITY_FILE_NAME=test_${TEST_ID}_iws_${LOOP_COUNTER}_activity.txt
         grep -r --include="${LOGFILE_NAME}" "opening wallet for" . > ${ACTIVITY_FILE_NAME}
+        wc -l ${ACTIVITY_FILE_NAME}
+
+        WALLET_TIME_FILE_NAME=test_${TEST_ID}_iws_${LOOP_COUNTER}_wallet.txt
+        grep -r --include="${LOGFILE_NAME}" "Finished createWalletRandom" . > ${WALLET_TIME_FILE_NAME}
         LOOP_COUNTER=$((LOOP_COUNTER+1))
     fi
 done < <(kubectl get pods)
