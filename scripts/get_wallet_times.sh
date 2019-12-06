@@ -9,18 +9,26 @@ if ! [[ "$TEST_ID" =~ ^[0-9]+$ ]]; then
    exit 1
 fi
 
+POD=1
 for ONE_FILE in $WALLET_TIME_FILE_NAME
 do
-    LINE_COUNT=0
-    FILE_SLOWEST=1
-    FILE_LONGEST=1
-    FILE_SUM=0
-    while read ONE_LINE;
-    do
-        RAW_MILLI_SECONDS="$(echo "$ONE_LINE" | awk '{print($NF+0)}' )"
-        MILLI_SECONDS=${RAW_MILLI_SECONDS/ms/}
-        LINE_COUNT=$(( LINE_COUNT + 1 ))
-        FILE_SUM=$(( $MILLI_SECONDS + $FILE_SUM ))
-    done < ${ONE_FILE}
-    echo $LINE_COUNT $SUM $((FILE_SUM/LINE_COUNT))
+    awk '{ val=$NF+0;
+           if(NR==1)  {min=val;max=val}
+           if(max<val){max=val}
+           if(min>val){min=val}
+           sum+=val
+         } END {
+              avg=sum/NR
+              print(sum,avg,max,min)
+         }' ${ONE_FILE}  | {
+
+            read SUM AVG MAX MIN
+            echo "------------------"
+            echo "FOR POD $POD "
+            echo "AVG = $AVG"
+            echo "MAX = $MAX"
+            echo "MIN = $MIN"
+
+        }
+    POD=$((POD + 1))
 done
