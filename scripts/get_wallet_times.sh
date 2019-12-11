@@ -24,10 +24,7 @@ do
 
             read SUM AVG MAX MIN
             echo "------------------"
-            echo "FOR POD $POD "
-            echo "AVG = $AVG"
-            echo "MAX = $MAX"
-            echo "MIN = $MIN"
+            echo "FOR POD $POD: AVG = $AVG MAX = $MAX MIN = $MIN"
 
         }
     POD=$((POD + 1))
