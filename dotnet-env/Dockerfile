@@ -37,7 +37,7 @@ RUN apt-get update && \
         libncursesw5-dev
 
 RUN cd /tmp && \
-      curl https://download.libsodium.org/libsodium/releases/old/libsodium-1.0.14.tar.gz | tar -xz && \
+      curl https://download.libsodium.org/libsodium/releases/old/unsupported/libsodium-1.0.14.tar.gz | tar -xz && \
        cd /tmp/libsodium-1.0.14 && \
        ./configure --disable-shared && \
        make && \
@@ -49,7 +49,7 @@ RUN wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsof
 RUN dpkg -i packages-microsoft-prod.deb
 RUN apt-get install apt-transport-https
 RUN apt-get update && \
-    apt-get install -y dotnet-sdk-2.2
+    apt-get install -y dotnet-sdk-3.1
 
 # might want to setup a nodejs server at some point
 # RUN mkdir www/

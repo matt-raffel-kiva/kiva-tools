@@ -6,7 +6,7 @@ WALLET_TIME_FILE_NAME=test_${TEST_ID}_iws_*_wallet.txt
 
 if ! [[ "$TEST_ID" =~ ^[0-9]+$ ]]; then
    echo "Just enter test # (1,2,3...)"
-   exit 1
+   # exit 1
 fi
 
 POD=1
