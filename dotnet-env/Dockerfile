@@ -52,11 +52,4 @@ RUN apt-get update && \
     apt-get install -y dotnet-sdk-3.1
 
 # might want to setup a nodejs server at some point
-# RUN mkdir www/
-# WORKDIR www/
-# ADD . .
-# RUN npm install
-# @todo maybe make 8080
-# EXPOSE 3001
-# @todo need an easy way to switch between dev and prod, can use docker-compose
 CMD [ "bash", "npm", "run", "start:debug" ]
