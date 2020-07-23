@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 docker volume prune -f
-docker rmi $(docker images -q | sort | uniq)
+docker rmi $(docker images -q | sort | uniq) -f
